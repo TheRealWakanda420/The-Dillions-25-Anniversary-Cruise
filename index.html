@@ -6,18 +6,22 @@
     <title>Dillons 25th Anniversary Cruise | Norwegian Viva</title>
     <style>
       :root {
-        --navy: #0f2742;
-        --navy-deep: #091729;
-        --gold: #d9aa43;
-        --gold-soft: #f3e1ae;
-        --red: #9e1c1c;
-        --red-soft: #ffe0e0;
-        --sand: #f8f4ea;
+        --navy-950: #071321;
+        --navy-900: #0e2238;
+        --navy-800: #17395b;
+        --navy-700: #24527d;
+        --gold-500: #d7aa48;
+        --gold-300: #f4ddb0;
+        --sand-50: #fbf8f1;
+        --mist-50: #f4f8fc;
+        --mist-100: #e6eef7;
+        --mist-200: #d2deec;
+        --ink: #1f2b38;
+        --muted: #607284;
         --white: #ffffff;
-        --ink: #1d2733;
-        --muted: #556372;
-        --border: #d9dfeb;
-        --card-shadow: 0 16px 40px rgba(15, 39, 66, 0.12);
+        --danger-700: #a62828;
+        --danger-500: #c53d2f;
+        --shadow: 0 22px 56px rgba(9, 23, 41, 0.12);
       }
 
       * { box-sizing: border-box; }
@@ -26,257 +30,391 @@
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
         color: var(--ink);
-        background: linear-gradient(180deg, #eef5fb 0%, #f9fbfd 25%, var(--sand) 100%);
-        line-height: 1.6;
+        background: linear-gradient(180deg, #eef5fb 0%, #f8fafc 24%, var(--sand-50) 100%);
+        line-height: 1.65;
       }
 
-      a { color: var(--navy); }
-      img { max-width: 100%; }
+      a { color: inherit; }
+      button, input, select, textarea { font: inherit; }
 
       .countdown-banner {
         position: sticky;
         top: 0;
-        z-index: 20;
-        background: linear-gradient(90deg, var(--red), #c23b22);
-        color: var(--white);
+        z-index: 30;
         padding: 0.85rem 1rem;
-        text-align: center;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        box-shadow: 0 8px 20px rgba(158, 28, 28, 0.25);
-      }
-
-      .countdown-banner span {
-        display: inline-block;
-        margin-left: 0.35rem;
-      }
-
-      .page-shell {
-        width: min(1180px, calc(100% - 2rem));
-        margin: 0 auto 4rem;
-      }
-
-      .hero {
-        margin-top: 1.5rem;
-        padding: 3rem clamp(1.5rem, 4vw, 3rem);
-        border-radius: 28px;
-        background:
-          linear-gradient(135deg, rgba(9, 23, 41, 0.92), rgba(15, 39, 66, 0.82)),
-          linear-gradient(135deg, #376996, #7fc1d9);
+        background: linear-gradient(90deg, var(--danger-700), var(--danger-500));
         color: var(--white);
-        box-shadow: var(--card-shadow);
+        box-shadow: 0 10px 24px rgba(166, 40, 40, 0.28);
       }
 
-      .eyebrow {
-        display: inline-flex;
+      .countdown-inner,
+      .top-nav-inner,
+      .page-shell {
+        width: min(1200px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .countdown-inner {
+        display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.35rem 0.8rem;
-        border-radius: 999px;
-        background: rgba(243, 225, 174, 0.16);
-        color: var(--gold-soft);
-        font-size: 0.9rem;
-        font-weight: 700;
+        justify-content: space-between;
+        gap: 0.9rem;
+      }
+
+      .countdown-copy {
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .countdown-units {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+
+      .countdown-unit {
+        min-width: 76px;
+        padding: 0.45rem 0.7rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.14);
+        text-align: center;
+      }
+
+      .countdown-value {
+        display: block;
+        font-size: 1.35rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.78rem;
         text-transform: uppercase;
         letter-spacing: 0.08em;
       }
 
-      h1, h2, h3 { line-height: 1.2; margin-top: 0; }
-      h1 {
-        font-size: clamp(2.4rem, 6vw, 4.5rem);
-        margin: 1rem 0;
+      .top-nav {
+        position: sticky;
+        top: 82px;
+        z-index: 25;
+        padding: 0.9rem 0;
+        background: rgba(248, 250, 252, 0.92);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(210, 222, 236, 0.9);
       }
 
-      .hero p {
-        font-size: 1.08rem;
-        max-width: 52rem;
-        color: rgba(255,255,255,0.9);
+      .top-nav-inner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        align-items: center;
+        justify-content: space-between;
       }
 
-      .hero-actions,
-      .quick-facts,
-      .port-links,
-      .excursion-links,
-      .restaurant-list,
-      .highlights-list,
-      .form-grid,
-      .availability-grid {
+      .top-nav-title {
+        font-weight: 800;
+        color: var(--navy-900);
+      }
+
+      .top-nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .top-nav-links a,
+      .index-card,
+      .directory-card {
+        text-decoration: none;
+      }
+
+      .top-nav-links a {
+        padding: 0.72rem 0.95rem;
+        border-radius: 999px;
+        background: var(--white);
+        border: 1px solid var(--mist-200);
+        color: var(--navy-900);
+        font-weight: 700;
+        box-shadow: 0 6px 16px rgba(13, 37, 62, 0.06);
+      }
+
+      .page-shell {
+        margin: 1.35rem auto 4rem;
+      }
+
+      .hero {
         display: grid;
-        gap: 1rem;
+        grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.95fr);
+        gap: 1.5rem;
+        padding: clamp(1.6rem, 4vw, 3rem);
+        border-radius: 32px;
+        background:
+          linear-gradient(135deg, rgba(7, 19, 33, 0.94), rgba(18, 44, 71, 0.86)),
+          linear-gradient(135deg, #2d608d, #7ec1d9);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 0.38rem 0.8rem;
+        border-radius: 999px;
+        background: rgba(244, 221, 176, 0.16);
+        color: var(--gold-300);
+        font-size: 0.88rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      h1, h2, h3, h4, p { margin-top: 0; }
+      h1 {
+        margin: 1rem 0 1rem;
+        font-size: clamp(2.6rem, 5.8vw, 4.6rem);
+        line-height: 1.05;
+      }
+
+      .hero-copy p {
+        max-width: 48rem;
+        font-size: 1.08rem;
+        color: rgba(255, 255, 255, 0.9);
       }
 
       .hero-actions {
-        margin-top: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(180px, max-content));
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 1.6rem;
       }
 
       .hero-actions a {
         display: inline-flex;
+        align-items: center;
         justify-content: center;
-        align-items: center;
-        min-height: 48px;
-        padding: 0.85rem 1.2rem;
+        min-height: 50px;
+        padding: 0.9rem 1.25rem;
         border-radius: 999px;
+        font-weight: 800;
         text-decoration: none;
-        font-weight: 700;
       }
 
-      .hero-actions a.primary {
-        background: var(--gold);
-        color: var(--navy-deep);
+      .hero-actions .primary {
+        background: var(--gold-500);
+        color: var(--navy-950);
       }
 
-      .hero-actions a.secondary {
-        border: 1px solid rgba(255,255,255,0.5);
+      .hero-actions .secondary {
+        border: 1px solid rgba(255, 255, 255, 0.4);
         color: var(--white);
       }
 
-      .quick-facts {
-        margin-top: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      .hero-panel {
+        padding: 1.3rem;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.14);
       }
 
-      .quick-facts article {
-        padding: 1rem;
-        border-radius: 18px;
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.14);
+      .hero-panel h2 {
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
       }
 
-      .quick-facts strong,
-      .section-card strong,
-      .port-card strong {
+      .fact-list {
+        display: grid;
+        gap: 0.95rem;
+      }
+
+      .fact-item {
+        padding-bottom: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .fact-item:last-child { border-bottom: 0; padding-bottom: 0; }
+      .fact-item strong {
         display: block;
-        margin-bottom: 0.35rem;
-      }
-
-      .anchor-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin: 1.5rem 0 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .anchor-nav a {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.7rem 1rem;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.14);
-        color: var(--white);
-        text-decoration: none;
-        font-weight: 600;
+        margin-bottom: 0.2rem;
+        color: var(--gold-300);
       }
 
       main {
         display: grid;
-        gap: 1.5rem;
-        margin-top: 1.5rem;
+        gap: 1.6rem;
+        margin-top: 1.6rem;
       }
 
       .section-card,
       .port-card {
         background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: clamp(1.25rem, 3vw, 2rem);
-        box-shadow: var(--card-shadow);
+        border: 1px solid var(--mist-200);
+        border-radius: 28px;
+        padding: clamp(1.35rem, 3vw, 2.1rem);
+        box-shadow: var(--shadow);
+      }
+
+      .section-header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 1.2rem;
+      }
+
+      .section-header p,
+      .section-card > p,
+      .port-card > p {
+        color: var(--muted);
+      }
+
+      .section-index {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 1rem;
+      }
+
+      .index-card {
+        padding: 1.15rem;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #ffffff 0%, var(--mist-50) 100%);
+        border: 1px solid var(--mist-200);
+      }
+
+      .index-card small,
+      .directory-card small,
+      .port-card .tag {
+        display: inline-flex;
+        padding: 0.3rem 0.65rem;
+        border-radius: 999px;
+        background: var(--mist-100);
+        color: var(--navy-700);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .index-card h3,
+      .directory-card h3 {
+        margin: 0.8rem 0 0.45rem;
+        color: var(--navy-900);
+      }
+
+      .index-card p,
+      .directory-card p,
+      .info-card p,
+      .port-column p,
+      .room-meta p {
+        margin-bottom: 0;
+        color: var(--muted);
       }
 
       .pricing-banner {
-        margin-bottom: 1.25rem;
-        padding: 1rem 1.2rem;
+        margin-bottom: 1.2rem;
+        padding: 1rem 1.15rem;
         border-radius: 18px;
-        background: linear-gradient(90deg, var(--gold), #f4c964);
-        color: var(--navy-deep);
-        font-size: 1.05rem;
-        font-weight: 700;
+        background: linear-gradient(90deg, var(--gold-500), #ebc97a);
+        color: var(--navy-950);
+        font-weight: 800;
       }
 
-      .availability-grid,
-      .form-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      .room-grid,
+      .directory-grid,
+      .port-columns,
+      .form-grid,
+      .planning-grid {
+        display: grid;
+        gap: 1rem;
       }
 
-      .availability-grid article {
-        padding: 1rem;
-        border-radius: 18px;
-        background: #f5f8fb;
-        border: 1px solid var(--border);
+      .room-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.95fr);
+        align-items: start;
+      }
+
+      .room-meta,
+      .info-card,
+      .port-column {
+        padding: 1.15rem;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #ffffff 0%, var(--mist-50) 100%);
+        border: 1px solid var(--mist-200);
+      }
+
+      .planning-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        margin-top: 1rem;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
-        margin: 1.25rem 0;
         overflow: hidden;
         border-radius: 18px;
+        margin-top: 1rem;
       }
 
       th, td {
         padding: 0.95rem 1rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--mist-200);
         text-align: left;
       }
 
       th {
-        background: var(--navy);
+        background: var(--navy-900);
         color: var(--white);
       }
 
       tr:nth-child(even) td { background: #f7fafd; }
 
       .callout {
-        border-left: 6px solid var(--gold);
-        background: #fffaf0;
-        padding: 1rem 1.1rem;
-        border-radius: 16px;
+        margin-top: 1.1rem;
+        padding: 1.15rem;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #fffaf0 0%, #fffdf8 100%);
+        border: 1px solid rgba(215, 170, 72, 0.35);
       }
 
       .callout ul,
-      .highlights-list,
-      .restaurant-list,
-      .port-links,
-      .excursion-links { padding-left: 1.1rem; }
-
-      .port-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.65rem;
-        padding-left: 0;
-        list-style: none;
+      .port-column ul,
+      .directory-card ul {
+        margin: 0;
+        padding-left: 1.15rem;
       }
 
-      .port-links a {
-        text-decoration: none;
-        padding: 0.7rem 0.95rem;
-        border-radius: 999px;
-        background: #eff5fb;
-        border: 1px solid var(--border);
-        font-weight: 700;
+      .fine-print {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        color: var(--muted);
       }
 
-      .form-grid label {
+      .form-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      label {
         display: grid;
         gap: 0.45rem;
         font-weight: 700;
-        color: var(--navy-deep);
+        color: var(--navy-950);
       }
 
       input, select, textarea {
         width: 100%;
-        padding: 0.85rem 0.95rem;
+        padding: 0.88rem 0.95rem;
         border-radius: 14px;
-        border: 1px solid #b9c5d6;
-        font: inherit;
-        color: var(--ink);
+        border: 1px solid #b9c9dc;
         background: var(--white);
+        color: var(--ink);
       }
 
-      textarea { min-height: 120px; resize: vertical; }
+      textarea {
+        min-height: 128px;
+        resize: vertical;
+      }
 
       .form-actions {
         display: flex;
@@ -286,83 +424,107 @@
         margin-top: 1rem;
       }
 
-      button {
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.95rem 1.3rem;
         border: 0;
         border-radius: 999px;
-        background: var(--navy);
+        background: var(--navy-900);
         color: var(--white);
-        padding: 0.9rem 1.4rem;
-        font: inherit;
-        font-weight: 700;
+        font-weight: 800;
         cursor: pointer;
       }
 
-      .form-note,
-      .fine-print {
+      .form-note {
         color: var(--muted);
-        font-size: 0.95rem;
+      }
+
+      .directory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .directory-card {
+        padding: 1.15rem;
+        border-radius: 20px;
+        background: linear-gradient(180deg, #ffffff 0%, var(--mist-50) 100%);
+        border: 1px solid var(--mist-200);
       }
 
       .ports-grid {
         display: grid;
-        gap: 1.25rem;
+        gap: 1.2rem;
       }
 
       .port-card.featured-port {
-        border: 2px solid rgba(217, 170, 67, 0.5);
+        border-color: rgba(215, 170, 72, 0.5);
         background: linear-gradient(180deg, #fffdf7 0%, #ffffff 100%);
       }
 
-      .port-card-header {
+      .port-header {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: flex-start;
         gap: 1rem;
-        align-items: baseline;
+        margin-bottom: 1rem;
       }
 
-      .port-card .tag {
-        display: inline-block;
-        padding: 0.35rem 0.7rem;
-        border-radius: 999px;
-        background: #eff5fb;
-        color: var(--navy);
-        font-weight: 700;
-        font-size: 0.88rem;
+      .port-header h2 { margin-bottom: 0.45rem; }
+
+      .port-columns {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
       }
 
-      .excursion-links {
+      .port-column h3 {
+        margin-bottom: 0.7rem;
+        color: var(--navy-900);
+      }
+
+      .link-pills {
         display: flex;
         flex-wrap: wrap;
         gap: 0.7rem;
-        padding-left: 0;
-        list-style: none;
+        margin-top: 0.9rem;
       }
 
-      .excursion-links a {
+      .link-pills a {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         min-height: 44px;
-        padding: 0.8rem 1rem;
-        border-radius: 14px;
-        background: var(--navy);
+        padding: 0.78rem 0.95rem;
+        border-radius: 999px;
+        background: var(--navy-900);
         color: var(--white);
+        font-weight: 800;
         text-decoration: none;
-        font-weight: 700;
       }
 
       footer {
-        padding: 1rem 0 3rem;
-        color: var(--muted);
+        padding: 1rem 0 2.5rem;
         text-align: center;
+        color: var(--muted);
+      }
+
+      @media (max-width: 960px) {
+        .hero,
+        .room-grid,
+        .port-columns {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 700px) {
-        .countdown-banner { position: static; }
+        .countdown-banner,
+        .top-nav { position: static; }
+        .top-nav { padding-top: 0.8rem; }
         table, thead, tbody, th, td, tr { display: block; }
         thead { display: none; }
         tr {
-          border: 1px solid var(--border);
+          border: 1px solid var(--mist-200);
           border-radius: 18px;
           overflow: hidden;
           margin-bottom: 0.8rem;
@@ -374,139 +536,206 @@
         }
         td::before {
           content: attr(data-label);
-          font-weight: 700;
-          color: var(--navy-deep);
+          font-weight: 800;
+          color: var(--navy-950);
         }
       }
     </style>
   </head>
   <body>
     <div class="countdown-banner" aria-live="polite">
-      ⏳ <span id="countdown-text">Loading countdown…</span>
+      <div class="countdown-inner">
+        <div class="countdown-copy">⏳ Secure your room at group rates before November 7, 2026</div>
+        <div class="countdown-units" id="countdown-units">
+          <div class="countdown-unit"><span class="countdown-value" id="days-value">--</span><span class="countdown-label">Days</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="hours-value">--</span><span class="countdown-label">Hours</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="minutes-value">--</span><span class="countdown-label">Minutes</span></div>
+          <div class="countdown-unit"><span class="countdown-value" id="seconds-value">--</span><span class="countdown-label">Seconds</span></div>
+        </div>
+      </div>
     </div>
+
+    <nav class="top-nav" aria-label="Primary page sections">
+      <div class="top-nav-inner">
+        <div class="top-nav-title">Plan Your Cruise Experience</div>
+        <div class="top-nav-links">
+          <a href="#page-guide">Page Guide</a>
+          <a href="#room-block">Room Block</a>
+          <a href="#booking-form">Booking Request</a>
+          <a href="#ports-guide">Port Guide</a>
+          <a href="#istanbul">Istanbul</a>
+          <a href="#venice">Venice</a>
+        </div>
+      </div>
+    </nav>
 
     <div class="page-shell">
       <header class="hero" id="norwegian-viva">
-        <div class="eyebrow">Dillons 25th Anniversary Cruise</div>
-        <h1>Book Your Norwegian Viva Celebration</h1>
-        <p>
-          The Dillons have selected a 10-night Norwegian Viva sailing from Istanbul,
-          Turkey to Venice (Ravenna), Italy from <strong>June 30 – July 10, 2028</strong>.
-          Use this page to review the room block, request your preferred cabin, and plan
-          your pre- and post-cruise time in the ports along the way.
-        </p>
-
-        <div class="hero-actions">
-          <a class="primary" href="#booking-form">Request Your Cabin</a>
-          <a class="secondary" href="#room-block">View Group Pricing</a>
+        <div class="hero-copy">
+          <div class="eyebrow">Dillons 25th Anniversary Cruise</div>
+          <h1>Book the Norwegian Viva Anniversary Sailing</h1>
+          <p>
+            Welcome aboard the Dillons' 25th Anniversary celebration. This page is now the
+            active booking hub for the selected 10-night Norwegian Viva sailing from
+            <strong>Istanbul, Turkey</strong> to <strong>Venice (Ravenna), Italy</strong>
+            from <strong>June 30 – July 10, 2028</strong>.
+          </p>
+          <p>
+            Start with the room block details, submit your booking request, and then use the
+            planning guide to make the most of your pre-cruise time in Istanbul and your
+            post-cruise stay near Venice.
+          </p>
+          <div class="hero-actions">
+            <a class="primary" href="#booking-form">Request Your Cabin</a>
+            <a class="secondary" href="#page-guide">Browse the Page Guide</a>
+          </div>
         </div>
 
-        <div class="quick-facts">
-          <article>
-            <strong>Confirmation #</strong>
-            <span>A3122227</span>
-          </article>
-          <article>
-            <strong>Deposit Due</strong>
-            <span>$125 per person by November 7, 2026</span>
-          </article>
-          <article>
-            <strong>Final Payment</strong>
-            <span>March 2, 2028</span>
-          </article>
-          <article>
-            <strong>Rooms Held</strong>
-            <span>8 Balcony · 2 Inside</span>
-          </article>
-        </div>
-
-        <ul class="anchor-nav" aria-label="Page sections">
-          <li><a href="#room-block">Room Block</a></li>
-          <li><a href="#booking-form">Booking Form</a></li>
-          <li><a href="#istanbul">Istanbul</a></li>
-          <li><a href="#kusadasi">Kusadasi</a></li>
-          <li><a href="#santorini">Santorini</a></li>
-          <li><a href="#mykonos">Mykonos</a></li>
-          <li><a href="#athens">Athens</a></li>
-          <li><a href="#kotor">Kotor</a></li>
-          <li><a href="#venice">Venice</a></li>
-        </ul>
+        <aside class="hero-panel" aria-label="Sailing overview">
+          <h2>Quick Sailing Snapshot</h2>
+          <div class="fact-list">
+            <div class="fact-item">
+              <strong>Confirmation #</strong>
+              <span>A3122227</span>
+            </div>
+            <div class="fact-item">
+              <strong>Room Block</strong>
+              <span>8 Balcony cabins · 2 Inside cabins</span>
+            </div>
+            <div class="fact-item">
+              <strong>Deposit Deadline</strong>
+              <span>$125 per person due November 7, 2026</span>
+            </div>
+            <div class="fact-item">
+              <strong>Final Payment</strong>
+              <span>March 2, 2028</span>
+            </div>
+            <div class="fact-item">
+              <strong>Route</strong>
+              <span>Istanbul → Kusadasi → Santorini → Mykonos → Athens → Kotor → Venice (Ravenna)</span>
+            </div>
+          </div>
+        </aside>
       </header>
 
       <main>
+        <section class="section-card" id="page-guide">
+          <div class="section-header">
+            <div>
+              <h2>Page Guide</h2>
+              <p>Jump straight to the part of the trip you want to review without scrolling the full page first.</p>
+            </div>
+          </div>
+          <div class="section-index">
+            <a class="index-card" href="#room-block">
+              <small>Step 1</small>
+              <h3>Review the Room Block</h3>
+              <p>Compare cabin categories, package pricing, deposit timing, and availability details.</p>
+            </a>
+            <a class="index-card" href="#booking-form">
+              <small>Step 2</small>
+              <h3>Submit Your Booking Request</h3>
+              <p>Send your room and package preferences directly to the travel planner by email.</p>
+            </a>
+            <a class="index-card" href="#istanbul">
+              <small>Pre-Cruise</small>
+              <h3>Plan Istanbul</h3>
+              <p>See top sights, restaurant picks, and excursion links for embarkation city planning.</p>
+            </a>
+            <a class="index-card" href="#ports-guide">
+              <small>Trip Planning</small>
+              <h3>Browse All Ports</h3>
+              <p>Use the sailing-order directory to preview every stop before diving into full details.</p>
+            </a>
+            <a class="index-card" href="#venice">
+              <small>Post-Cruise</small>
+              <h3>Plan Venice</h3>
+              <p>Build in time for disembarkation, dining, and extra sightseeing after the cruise ends.</p>
+            </a>
+          </div>
+        </section>
+
         <section class="section-card" id="room-block">
           <div class="pricing-banner">
             Rooms not allocated to a guest and deposited by November 7, 2026 will be released back to Norwegian Cruise Line and are no longer guaranteed at group pricing.
           </div>
 
-          <h2>Room Block Details</h2>
-          <p>
-            <strong>Room Block Name:</strong> Dillons 25th Anniversary Cruise<br />
-            <strong>Ship / Sailing:</strong> Norwegian Viva, June 30 – July 10, 2028 (10 nights)<br />
-            <strong>Route:</strong> Istanbul, Turkey → Venice (Ravenna), Italy
-          </p>
-
-          <div class="availability-grid">
-            <article>
-              <strong>Rooms held</strong>
-              <span>8 Balcony cabins and 2 Inside cabins</span>
-            </article>
-            <article>
-              <strong>Deposit</strong>
-              <span>$125 per person, due November 7, 2026</span>
-            </article>
-            <article>
-              <strong>Final payment</strong>
-              <span>March 2, 2028</span>
-            </article>
+          <div class="section-header">
+            <div>
+              <h2>Room Block Details</h2>
+              <p>Dillons 25th Anniversary Cruise · Norwegian Viva · June 30 – July 10, 2028 · Istanbul, Turkey → Venice (Ravenna), Italy</p>
+            </div>
           </div>
 
-          <table aria-label="Room block pricing for two guests per cabin">
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Cruise Only</th>
-                <th>Free at Sea™</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Category">Balcony (BA)</td>
-                <td data-label="Cruise Only">$7,590.10</td>
-                <td data-label="Free at Sea">$8,728.10</td>
-              </tr>
-              <tr>
-                <td data-label="Category">Inside (IA)</td>
-                <td data-label="Cruise Only">$5,128.10</td>
-                <td data-label="Free at Sea">$6,258.10</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="room-grid">
+            <div>
+              <table aria-label="Room block pricing for two guests per cabin">
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Cruise Only</th>
+                    <th>Free at Sea™</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Category">Balcony (BA)</td>
+                    <td data-label="Cruise Only">$7,590.10</td>
+                    <td data-label="Free at Sea">$8,728.10</td>
+                  </tr>
+                  <tr>
+                    <td data-label="Category">Inside (IA)</td>
+                    <td data-label="Cruise Only">$5,128.10</td>
+                    <td data-label="Free at Sea">$6,258.10</td>
+                  </tr>
+                </tbody>
+              </table>
 
-          <div class="callout">
-            <h3>Free at Sea™ Includes</h3>
-            <p>Because this is a 10-night sailing, the 9+ night tier includes:</p>
-            <ul>
-              <li><strong>Unlimited Open Bar</strong> — premium spirits, cocktails, wine, draft beer, soda/juice; onboard and at Great Stirrup Cay</li>
-              <li><strong>Specialty Dining</strong> — 4 included meals (highest tier, for 9+ night sailings)</li>
-              <li><strong>Wi-Fi</strong> — 150 minutes of high-speed Wi-Fi per guest (Starlink-powered)</li>
-              <li><strong>Shore Excursion Credit</strong> — $50 toward excursions at every port (applied to guest 1)</li>
-              <li><strong>Gratuities</strong> — pre-paid as part of package pricing</li>
-            </ul>
+              <div class="callout">
+                <h3>Free at Sea™ Comparison</h3>
+                <p>Because this is a 10-night sailing, the 9+ night tier includes:</p>
+                <ul>
+                  <li><strong>Unlimited Open Bar</strong> — premium spirits, cocktails, wine, draft beer, soda/juice; onboard and at Great Stirrup Cay</li>
+                  <li><strong>Specialty Dining</strong> — 4 included meals (highest tier, for 9+ night sailings)</li>
+                  <li><strong>Wi-Fi</strong> — 150 minutes of high-speed Wi-Fi per guest (Starlink-powered)</li>
+                  <li><strong>Shore Excursion Credit</strong> — $50 toward excursions at every port (applied to guest 1)</li>
+                  <li><strong>Gratuities</strong> — pre-paid as part of package pricing</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="room-meta">
+              <h3>Booking Timeline</h3>
+              <div class="planning-grid">
+                <div class="info-card">
+                  <small>Held Now</small>
+                  <h4>10 Cabins</h4>
+                  <p>8 Balcony cabins and 2 Inside cabins are held in the group block.</p>
+                </div>
+                <div class="info-card">
+                  <small>Deposit</small>
+                  <h4>$125 Per Person</h4>
+                  <p>Deposit is due by November 7, 2026 to keep group pricing.</p>
+                </div>
+                <div class="info-card">
+                  <small>Final Pay</small>
+                  <h4>March 2, 2028</h4>
+                  <p>Guests should plan all final balances around the published payment date.</p>
+                </div>
+              </div>
+            </aside>
           </div>
 
-          <p class="fine-print">
-            <em>Room block rooms not claimed by November 7, 2026 may still be available for late additions through final payment (March 2, 2028) — contact Triniti to check availability.</em>
-          </p>
+          <p class="fine-print"><em>Room block rooms not claimed by November 7, 2026 may still be available for late additions through final payment (March 2, 2028) — contact Triniti to check availability.</em></p>
         </section>
 
         <section class="section-card" id="booking-form">
-          <h2>Booking Request Submission</h2>
-          <p>
-            Complete the form below to prepare your booking request for
-            <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a>.
-            Submitting opens your email app with the request pre-filled.
-          </p>
+          <div class="section-header">
+            <div>
+              <h2>Booking Request Submission</h2>
+              <p>Fill out the request below and your email app will open a pre-filled message to <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a>.</p>
+            </div>
+          </div>
 
           <form id="booking-request-form">
             <div class="form-grid">
@@ -527,8 +756,8 @@
                 </select>
               </label>
               <label>
-                Package preference
-                <select name="Package preference" required>
+                Free at Sea or Cruise Only
+                <select name="Free at Sea or Cruise Only" required>
                   <option value="">Select an option</option>
                   <option>Free at Sea</option>
                   <option>Cruise Only</option>
@@ -556,251 +785,378 @@
               </label>
             </div>
 
-            <label style="display:grid; gap:0.45rem; margin-top:1rem; font-weight:700; color:var(--navy-deep);">
+            <label style="margin-top: 1rem;">
               Special requests / notes
               <textarea name="Special requests / notes"></textarea>
             </label>
 
             <div class="form-actions">
-              <button type="submit">Create Booking Email</button>
-              <span class="form-note">Need help instead? Email <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a> directly.</span>
+              <button class="button" type="submit">Create Booking Email</button>
+              <span class="form-note">Prefer to write directly? Email <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a>.</span>
             </div>
           </form>
         </section>
 
         <section class="section-card" id="ports-guide">
-          <h2>Port-by-Port Guide</h2>
-          <p>Follow the sailing in exact order and jump to the stop you want to plan first.</p>
-          <ul class="port-links">
-            <li><a href="#istanbul">Istanbul</a></li>
-            <li><a href="#kusadasi">Kusadasi</a></li>
-            <li><a href="#santorini">Santorini</a></li>
-            <li><a href="#mykonos">Mykonos</a></li>
-            <li><a href="#athens">Athens</a></li>
-            <li><a href="#kotor">Kotor</a></li>
-            <li><a href="#venice">Venice</a></li>
-          </ul>
+          <div class="section-header">
+            <div>
+              <h2>Port-by-Port Planning Directory</h2>
+              <p>Use this cleaner trip directory to scan the sailing in order, then open the full section for each stop.</p>
+            </div>
+          </div>
+          <div class="directory-grid">
+            <a class="directory-card" href="#istanbul">
+              <small>Embarkation</small>
+              <h3>Istanbul</h3>
+              <p>Pre-cruise city planning, Bosphorus views, and iconic historic sites.</p>
+            </a>
+            <a class="directory-card" href="#kusadasi">
+              <small>Port 2</small>
+              <h3>Kusadasi</h3>
+              <p>Ephesus access, ruins, and waterfront dining near the marina.</p>
+            </a>
+            <a class="directory-card" href="#santorini">
+              <small>Port 3</small>
+              <h3>Santorini</h3>
+              <p>Caldera views, wineries, and village-hopping across the island.</p>
+            </a>
+            <a class="directory-card" href="#mykonos">
+              <small>Port 4</small>
+              <h3>Mykonos</h3>
+              <p>Iconic whitewashed streets, Delos, and sunset stops by the water.</p>
+            </a>
+            <a class="directory-card" href="#athens">
+              <small>Port 5</small>
+              <h3>Athens (Piraeus)</h3>
+              <p>Acropolis essentials, historic neighborhoods, and rooftop dinners.</p>
+            </a>
+            <a class="directory-card" href="#kotor">
+              <small>Port 6</small>
+              <h3>Montenegro (Kotor)</h3>
+              <p>Bay views, old town streets, and boat excursions around Kotor.</p>
+            </a>
+            <a class="directory-card" href="#venice">
+              <small>Disembarkation</small>
+              <h3>Venice (Ravenna)</h3>
+              <p>Post-cruise canal planning, landmark visits, and final celebratory dinners.</p>
+            </a>
+          </div>
         </section>
 
         <div class="ports-grid">
           <section class="port-card featured-port" id="istanbul">
-            <div class="port-card-header">
-              <h2>🇹🇷 Istanbul</h2>
-              <span class="tag">Embarkation / Pre-Cruise Port</span>
+            <div class="port-header">
+              <div>
+                <span class="tag">Embarkation / Pre-Cruise Port</span>
+                <h2>🇹🇷 Istanbul</h2>
+                <p>Give this city extra time if you can — it sets the tone for the entire anniversary trip.</p>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>Hagia Sophia — Byzantine-era architectural icon</li>
-              <li>Blue Mosque (Sultan Ahmed Mosque) — hand-painted blue Iznik tiles, six minarets</li>
-              <li>Topkapi Palace — former Ottoman sultan residence, now a museum</li>
-              <li>Basilica Cistern — atmospheric underground Byzantine reservoir</li>
-              <li>Grand Bazaar — one of the world's oldest/largest covered markets (1,200+ shops)</li>
-              <li>Bosphorus Strait cruise — sail the waterway dividing Europe and Asia</li>
-              <li>Galata Tower — panoramic views over Old City and Beyoğlu</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> Tatbak — beloved kebab shop specializing in Gaziantep-style lahmacun since 1960, Nişantaşı district. Fast, reasonably priced, genuinely local.</li>
-              <li><strong>$$ (Mid-Range):</strong> Zübeyir Ocakbaşı — charcoal-grill spot in Taksim known for traditional meze and grilled meats; lively, unpretentious, locals return often.</li>
-              <li><strong>$$$ (High-End):</strong> Mikla — Michelin-starred, sweeping Bosphorus views. Chef Mehmet Gürs' "New Anatolian Cuisine" tasting menus. Reservations essential.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=IST">NCL</a></li>
-              <li><a href="https://www.viator.com/Istanbul/d585-ttd">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>Hagia Sophia — Byzantine-era architectural icon</li>
+                  <li>Blue Mosque (Sultan Ahmed Mosque) — hand-painted blue Iznik tiles, six minarets</li>
+                  <li>Topkapi Palace — former Ottoman sultan residence, now a museum</li>
+                  <li>Basilica Cistern — atmospheric underground Byzantine reservoir</li>
+                  <li>Grand Bazaar — one of the world's oldest/largest covered markets (1,200+ shops)</li>
+                  <li>Bosphorus Strait cruise — sail the waterway dividing Europe and Asia</li>
+                  <li>Galata Tower — panoramic views over Old City and Beyoğlu</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> Tatbak — beloved kebab shop specializing in Gaziantep-style lahmacun since 1960, Nişantaşı district. Fast, reasonably priced, genuinely local.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Zübeyir Ocakbaşı — charcoal-grill spot in Taksim known for traditional meze and grilled meats; lively, unpretentious, locals return often.</li>
+                  <li><strong>$$$ (High-End):</strong> Mikla — Michelin-starred, sweeping Bosphorus views. Chef Mehmet Gürs' “New Anatolian Cuisine” tasting menus. Reservations essential.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>Compare ship-sponsored and independent options before arrival.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=IST">NCL</a>
+                  <a href="https://www.viator.com/Istanbul/d585-ttd">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card" id="kusadasi">
-            <div class="port-card-header">
-              <h2>🇹🇷 Kusadasi (Ephesus)</h2>
+            <div class="port-header">
+              <div>
+                <span class="tag">Port 2</span>
+                <h2>🇹🇷 Kusadasi (Ephesus)</h2>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>Ephesus — UNESCO World Heritage Site; Library of Celsus, the Great Theater, Fountain of Trajan</li>
-              <li>House of the Virgin Mary — believed final residence of the Virgin Mary</li>
-              <li>St. John's Basilica — 6th-century ruins over the apostle's traditional burial site</li>
-              <li>Temple of Artemis — remains of one of the Seven Wonders of the Ancient World</li>
-              <li>Şirince Village — hillside village known for fruit wines</li>
-              <li>Kusadasi Marina &amp; Old Bazaar — leather goods, ceramics, local shopping</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> Erzincan Restaurant — family-run since 1997, near the port; exceptional dips, kebabs, homemade baklava.</li>
-              <li><strong>$$ (Mid-Range):</strong> Oksa Marina — well-loved seafood spot with fresh mezze, on the water.</li>
-              <li><strong>$$$ (High-End):</strong> Tranche — Setur Marina steak and Mediterranean seafood with a dedicated wine program; 4.6/5 rated.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/in/en/shore-excursions/search?destination=Europe+Cruises&port=KUS">NCL</a></li>
-              <li><a href="https://www.viator.com/Kusadasi/d970-ttd">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>Ephesus — UNESCO World Heritage Site; Library of Celsus, the Great Theater, Fountain of Trajan</li>
+                  <li>House of the Virgin Mary — believed final residence of the Virgin Mary</li>
+                  <li>St. John's Basilica — 6th-century ruins over the apostle's traditional burial site</li>
+                  <li>Temple of Artemis — remains of one of the Seven Wonders of the Ancient World</li>
+                  <li>Şirince Village — hillside village known for fruit wines</li>
+                  <li>Kusadasi Marina &amp; Old Bazaar — leather goods, ceramics, local shopping</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> Erzincan Restaurant — family-run since 1997, near the port; exceptional dips, kebabs, homemade baklava.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Oksa Marina — well-loved seafood spot with fresh mezze, on the water.</li>
+                  <li><strong>$$$ (High-End):</strong> Tranche — Setur Marina steak and Mediterranean seafood with a dedicated wine program; 4.6/5 rated.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>Prioritize Ephesus options early if ancient sites are a must-do for your group.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/in/en/shore-excursions/search?destination=Europe+Cruises&port=KUS">NCL</a>
+                  <a href="https://www.viator.com/Kusadasi/d970-ttd">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card" id="santorini">
-            <div class="port-card-header">
-              <h2>🇬🇷 Santorini</h2>
+            <div class="port-header">
+              <div>
+                <span class="tag">Port 3</span>
+                <h2>🇬🇷 Santorini</h2>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>Oia — iconic whitewashed village, world-famous sunset views</li>
-              <li>Fira — island capital, caldera-edge views, cable car to old port</li>
-              <li>Fira-to-Oia caldera hike — ~10km, connects the island's most scenic villages</li>
-              <li>Caldera boat/catamaran cruise — sail past the volcanic islets and hot springs</li>
-              <li>Ancient Akrotiri — excavated Bronze Age Minoan settlement</li>
-              <li>Imerovigli &amp; Skaros Rock — quieter caldera viewpoint</li>
-              <li>Local wineries — Santorini's volcanic-soil wines (Assyrtiko)</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> Ouzeri Lefteris (Karterados) — mezedes and ouzo, working-class local spot, no tourist pricing.</li>
-              <li><strong>$$ (Mid-Range):</strong> Metaxy Mas (Exo Gonia) — where locals actually eat; hyper-local ingredients, Greek fusion, hidden gem off the caldera circuit.</li>
-              <li><strong>$$$ (High-End):</strong> Selene (Pyrgos) — widely considered the island's most serious restaurant; 30 years of research into Santorinian ingredients, tasting menu.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=JTR">NCL</a></li>
-              <li><a href="https://www.viator.com/Santorini/d838-ttd">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>Oia — iconic whitewashed village, world-famous sunset views</li>
+                  <li>Fira — island capital, caldera-edge views, cable car to old port</li>
+                  <li>Fira-to-Oia caldera hike — ~10km, connects the island's most scenic villages</li>
+                  <li>Caldera boat/catamaran cruise — sail past the volcanic islets and hot springs</li>
+                  <li>Ancient Akrotiri — excavated Bronze Age Minoan settlement</li>
+                  <li>Imerovigli &amp; Skaros Rock — quieter caldera viewpoint</li>
+                  <li>Local wineries — Santorini's volcanic-soil wines (Assyrtiko)</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> Ouzeri Lefteris (Karterados) — mezedes and ouzo, working-class local spot, no tourist pricing.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Metaxy Mas (Exo Gonia) — where locals actually eat; hyper-local ingredients, Greek fusion, hidden gem off the caldera circuit.</li>
+                  <li><strong>$$$ (High-End):</strong> Selene (Pyrgos) — widely considered the island's most serious restaurant; 30 years of research into Santorinian ingredients, tasting menu.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>Choose between caldera scenery, wine tasting, or archaeological tours depending on pace.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=JTR">NCL</a>
+                  <a href="https://www.viator.com/Santorini/d838-ttd">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card" id="mykonos">
-            <div class="port-card-header">
-              <h2>🇬🇷 Mykonos</h2>
+            <div class="port-header">
+              <div>
+                <span class="tag">Port 4</span>
+                <h2>🇬🇷 Mykonos</h2>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>Little Venice (Alefkandra) — 18th-century houses perched over the water, best for sunset cocktails</li>
-              <li>Windmills (Kato Mili) — iconic 16th-century windmills above Little Venice</li>
-              <li>Panagia Paraportiani — striking whitewashed church complex, one of Greece's most photographed</li>
-              <li>Mykonos Town (Chora) — whitewashed lanes, boutiques, galleries</li>
-              <li>Delos day trip — UNESCO World Heritage archaeological site, mythical birthplace of Apollo &amp; Artemis</li>
-              <li>Ano Mera village — quieter, centered on the Panagia Tourliani monastery</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> To Maereio (Chora) — beloved taverna run by twin brothers for nearly 20 years; small menu, daily specials, authentic.</li>
-              <li><strong>$$ (Mid-Range):</strong> Fokos Taverna — remote north-coast beach taverna, deeply local vibe, seasonal short menu, slow-cooked goat.</li>
-              <li><strong>$$$ (High-End):</strong> Krama (Semeli Hotel) — contemporary Greek fine dining, polished courtyard setting, tasting menu.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=JMK">NCL</a></li>
-              <li><a href="https://www.viator.com/Mykonos/d904-ttd">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>Little Venice (Alefkandra) — 18th-century houses perched over the water, best for sunset cocktails</li>
+                  <li>Windmills (Kato Mili) — iconic 16th-century windmills above Little Venice</li>
+                  <li>Panagia Paraportiani — striking whitewashed church complex, one of Greece's most photographed</li>
+                  <li>Mykonos Town (Chora) — whitewashed lanes, boutiques, galleries</li>
+                  <li>Delos day trip — UNESCO World Heritage archaeological site, mythical birthplace of Apollo &amp; Artemis</li>
+                  <li>Ano Mera village — quieter, centered on the Panagia Tourliani monastery</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> To Maereio (Chora) — beloved taverna run by twin brothers for nearly 20 years; small menu, daily specials, authentic.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Fokos Taverna — remote north-coast beach taverna, deeply local vibe, seasonal short menu, slow-cooked goat.</li>
+                  <li><strong>$$$ (High-End):</strong> Krama (Semeli Hotel) — contemporary Greek fine dining, polished courtyard setting, tasting menu.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>Mykonos can be scenic or slow-paced; this is a good stop to balance activities with downtime.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=JMK">NCL</a>
+                  <a href="https://www.viator.com/Mykonos/d904-ttd">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card" id="athens">
-            <div class="port-card-header">
-              <h2>🇬🇷 Athens (Piraeus)</h2>
+            <div class="port-header">
+              <div>
+                <span class="tag">Port 5</span>
+                <h2>🇬🇷 Athens (Piraeus)</h2>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>The Acropolis &amp; Parthenon — UNESCO World Heritage Site, the essential Athens visit</li>
-              <li>Acropolis Museum — state-of-the-art museum of artifacts from the Acropolis</li>
-              <li>Plaka neighborhood — cobblestone streets at the foot of the Acropolis, neoclassical charm</li>
-              <li>Ancient Agora — well-preserved marketplace and Temple of Hephaestus</li>
-              <li>Monastiraki Square &amp; flea market</li>
-              <li>Rooftop bars with Acropolis views</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> Kosta Souvlaki (Syntagma) — no-frills, fast, authentic souvlaki wraps locals actually queue for.</li>
-              <li><strong>$$ (Mid-Range):</strong> Klimataria (Psyrri) — historic taverna since the early 20th century; vine-covered courtyard, iconic slow-cooked lamb.</li>
-              <li><strong>$$$ (High-End):</strong> GB Roof Garden — refined cuisine, panoramic Acropolis views, memorable special-occasion dinner.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=PIR">NCL</a></li>
-              <li><a href="https://www.viator.com/Athens/d496">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>The Acropolis &amp; Parthenon — UNESCO World Heritage Site, the essential Athens visit</li>
+                  <li>Acropolis Museum — state-of-the-art museum of artifacts from the Acropolis</li>
+                  <li>Plaka neighborhood — cobblestone streets at the foot of the Acropolis, neoclassical charm</li>
+                  <li>Ancient Agora — well-preserved marketplace and Temple of Hephaestus</li>
+                  <li>Monastiraki Square &amp; flea market</li>
+                  <li>Rooftop bars with Acropolis views</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> Kosta Souvlaki (Syntagma) — no-frills, fast, authentic souvlaki wraps locals actually queue for.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Klimataria (Psyrri) — historic taverna since the early 20th century; vine-covered courtyard, iconic slow-cooked lamb.</li>
+                  <li><strong>$$$ (High-End):</strong> GB Roof Garden — refined cuisine, panoramic Acropolis views, memorable special-occasion dinner.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>If this is your must-see history stop, reserve Acropolis-focused tours well in advance.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=PIR">NCL</a>
+                  <a href="https://www.viator.com/Athens/d496">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card" id="kotor">
-            <div class="port-card-header">
-              <h2>🇲🇪 Montenegro (Kotor)</h2>
+            <div class="port-header">
+              <div>
+                <span class="tag">Port 6</span>
+                <h2>🇲🇪 Montenegro (Kotor)</h2>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>Kotor Old Town — UNESCO World Heritage Site, medieval walled city</li>
-              <li>St. John's Fortress hike — ~1,300+ steps up the city walls for panoramic Bay of Kotor views</li>
-              <li>Perast &amp; Our Lady of the Rocks — artificial islet with a picturesque chapel, 15-minute drive from Kotor</li>
-              <li>Bay of Kotor boat tour — fjord-like bay, Blue Cave sea grotto option</li>
-              <li>Maritime Museum of Montenegro — housed in the Grgurina Palace</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> BBQ Tanjga — Balkan grill, high quality at reasonable prices, favored by locals over tourist-trap alternatives.</li>
-              <li><strong>$$ (Mid-Range):</strong> Konoba Scala Santa — best value on the Bay of Kotor without compromising quality; grilled squid, Dalmatian stew.</li>
-              <li><strong>$$$ (High-End):</strong> Galion — waterfront, extraordinary bay-and-mountain setting, Mediterranean cuisine; reservations required in summer.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=KOT">NCL</a></li>
-              <li><a href="https://www.viator.com/Kotor/d23238-ttd">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>Kotor Old Town — UNESCO World Heritage Site, medieval walled city</li>
+                  <li>St. John's Fortress hike — ~1,300+ steps up the city walls for panoramic Bay of Kotor views</li>
+                  <li>Perast &amp; Our Lady of the Rocks — artificial islet with a picturesque chapel, 15-minute drive from Kotor</li>
+                  <li>Bay of Kotor boat tour — fjord-like bay, Blue Cave sea grotto option</li>
+                  <li>Maritime Museum of Montenegro — housed in the Grgurina Palace</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> BBQ Tanjga — Balkan grill, high quality at reasonable prices, favored by locals over tourist-trap alternatives.</li>
+                  <li><strong>$$ (Mid-Range):</strong> Konoba Scala Santa — best value on the Bay of Kotor without compromising quality; grilled squid, Dalmatian stew.</li>
+                  <li><strong>$$$ (High-End):</strong> Galion — waterfront, extraordinary bay-and-mountain setting, Mediterranean cuisine; reservations required in summer.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>This is a strong port for scenic boat outings if your group wants a lower-impact day.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=KOT">NCL</a>
+                  <a href="https://www.viator.com/Kotor/d23238-ttd">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="port-card featured-port" id="venice">
-            <div class="port-card-header">
-              <h2>🇮🇹 Venice (Ravenna)</h2>
-              <span class="tag">Disembarkation / Post-Cruise Port</span>
+            <div class="port-header">
+              <div>
+                <span class="tag">Disembarkation / Post-Cruise Port</span>
+                <h2>🇮🇹 Venice (Ravenna)</h2>
+                <p>Build in extra time here if possible — this finale deserves a slower, more celebratory pace.</p>
+              </div>
             </div>
-            <h3>Highlights &amp; Things to Do</h3>
-            <ul class="highlights-list">
-              <li>St. Mark's Square (Piazza San Marco) — Venice's grand central square</li>
-              <li>St. Mark's Basilica — Byzantine-Gothic-Renaissance church famed for golden mosaics</li>
-              <li>Doge's Palace — former seat of the Venetian Republic's rulers, Gothic masterpiece</li>
-              <li>Grand Canal — best seen by vaporetto (water bus) or gondola</li>
-              <li>Rialto Bridge &amp; Rialto Market — iconic bridge and the city's oldest market</li>
-              <li>Murano &amp; Burano islands — glassblowing island and colorful-house island, worth a half/full day</li>
-              <li>Bridge of Sighs — connects the Doge's Palace to the old prisons</li>
-            </ul>
-            <h3>Restaurants by Price Point</h3>
-            <ul class="restaurant-list">
-              <li><strong>$ (Budget/Local):</strong> All'Arco (near Rialto Market) — Venice's most famous bacaro, traditional cicchetti (small plates), where locals have eaten for generations. Featured in Stanley Tucci's "Searching for Italy."</li>
-              <li><strong>$$ (Mid-Range):</strong> Vini Da Gigio (Cannaregio) — sophisticated Venetian dishes, canal-side, strong local wine list, seasonal menu sourced from a Venetian-island farmshare.</li>
-              <li><strong>$$$ (High-End):</strong> Osteria da Fiore — Michelin-starred, quintessential Venetian canal-side fine dining; a true special-occasion destination.</li>
-            </ul>
-            <h3>Excursion Links</h3>
-            <ul class="excursion-links">
-              <li><a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=VCE">NCL</a></li>
-              <li><a href="https://www.viator.com/Venice/d522">Viator</a></li>
-              <li><a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a></li>
-            </ul>
+            <div class="port-columns">
+              <div class="port-column">
+                <h3>Highlights &amp; Things to Do</h3>
+                <ul>
+                  <li>St. Mark's Square (Piazza San Marco) — Venice's grand central square</li>
+                  <li>St. Mark's Basilica — Byzantine-Gothic-Renaissance church famed for golden mosaics</li>
+                  <li>Doge's Palace — former seat of the Venetian Republic's rulers, Gothic masterpiece</li>
+                  <li>Grand Canal — best seen by vaporetto (water bus) or gondola</li>
+                  <li>Rialto Bridge &amp; Rialto Market — iconic bridge and the city's oldest market</li>
+                  <li>Murano &amp; Burano islands — glassblowing island and colorful-house island, worth a half/full day</li>
+                  <li>Bridge of Sighs — connects the Doge's Palace to the old prisons</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Restaurants by Price Point</h3>
+                <ul>
+                  <li><strong>$ (Budget/Local):</strong> All'Arco (near Rialto Market) — Venice's most famous bacaro, traditional cicchetti (small plates), where locals have eaten for generations. Featured in Stanley Tucci's “Searching for Italy.”</li>
+                  <li><strong>$$ (Mid-Range):</strong> Vini Da Gigio (Cannaregio) — sophisticated Venetian dishes, canal-side, strong local wine list, seasonal menu sourced from a Venetian-island farmshare.</li>
+                  <li><strong>$$$ (High-End):</strong> Osteria da Fiore — Michelin-starred, quintessential Venetian canal-side fine dining; a true special-occasion destination.</li>
+                </ul>
+              </div>
+              <div class="port-column">
+                <h3>Excursion Links</h3>
+                <p>Use the post-cruise window for a longer city day, island hopping, or a final splurge dinner.</p>
+                <div class="link-pills">
+                  <a href="https://www.ncl.com/shore-excursions/search?destination=Mediterranean+Cruises&port=VCE">NCL</a>
+                  <a href="https://www.viator.com/Venice/d522">Viator</a>
+                  <a href="https://www.shoreexcursionsgroup.com/?source=eticket&id=6929">Shore Excursions Group</a>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </main>
 
       <footer>
-        Norwegian Viva · June 30 – July 10, 2028 · For booking assistance contact
-        <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a>
+        Norwegian Viva · June 30 – July 10, 2028 · Booking support: <a href="mailto:T.Hester@cruiseplanners.com">T.Hester@cruiseplanners.com</a>
       </footer>
     </div>
 
     <script>
       const deadline = new Date(2026, 10, 7, 23, 59, 59);
-      const countdownText = document.getElementById('countdown-text');
+      const countdownCopy = document.querySelector('.countdown-copy');
+      const daysValue = document.getElementById('days-value');
+      const hoursValue = document.getElementById('hours-value');
+      const minutesValue = document.getElementById('minutes-value');
+      const secondsValue = document.getElementById('seconds-value');
+      const countdownUnits = document.getElementById('countdown-units');
 
       function updateCountdown() {
         const now = new Date();
         const timeLeft = deadline - now;
 
         if (timeLeft <= 0) {
-          countdownText.textContent = 'Deposit deadline has passed. Contact Triniti to check remaining availability.';
+          countdownCopy.textContent = 'The deposit deadline has passed. Contact Triniti to check current availability.';
+          countdownUnits.style.display = 'none';
           return;
         }
 
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
         const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
         const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-        countdownText.textContent = `${days} Days Left to Secure Your Room at Group Rates · ${hours}h ${minutes}m`;
+        const seconds = Math.floor((timeLeft / 1000) % 60);
+
+        daysValue.textContent = String(days);
+        hoursValue.textContent = String(hours).padStart(2, '0');
+        minutesValue.textContent = String(minutes).padStart(2, '0');
+        secondsValue.textContent = String(seconds).padStart(2, '0');
+        countdownCopy.textContent = `${days} Days Left to Secure Your Room at Group Rates`;
       }
 
       updateCountdown();
@@ -817,6 +1173,7 @@
         const mailBody = encodeURIComponent(
           `Please review the following booking request for the Dillons 25th Anniversary Cruise.\n\n${body}`
         );
+
         window.location.href = `mailto:T.Hester@cruiseplanners.com?subject=${subject}&body=${mailBody}`;
       });
     </script>
